@@ -1,0 +1,13 @@
+from django.db import models
+from django.contrib.auth.models import User
+class Rant(models.Model):
+	"""
+	A rant that belongs to a user.
+	"""
+
+	name = models.CharField(max_length=255)
+	description = models.TextField(blank=True)
+	user = models.ForeignKey(User, related_name='rants')
+
+	def __unicode__(self):
+		return self.name
