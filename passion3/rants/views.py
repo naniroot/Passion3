@@ -1,3 +1,5 @@
+import datetime
+
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -16,3 +18,13 @@ def rant(request, slug):
 	return render_to_response('rants/index.html', {
 		'rant': rant
 	}, context_instance=RequestContext(request))
+
+def post(request, rant, slug):
+	post = get_object_or_404(Post, active=True, 
+				publish_at__lte=datetime.datetime.now(),
+				rant__slug=rant,
+				slug=slug)
+	return render_to_response('rants/post.html', {
+		'post': post,
+	}, context_instance=RequestContext(request))
+	

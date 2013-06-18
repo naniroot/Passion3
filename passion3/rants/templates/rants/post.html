@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ post.title}} | {{post.rant.name }} </title>
+	</head>
+	<body>
+		<h1> {{ post.title }} </h1>
+		{{ post.body|linebreaks }}
+		<aside>
+		{{ post.publish_at | date }}
+		<ul>
+			{% for tag in post.tags.all %}
+			<li>{{ tag }}</li>
+			{% endfor %}
+		</ul>
+		</aside>
+	</body>
+</html>
+	

@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^$', 'rants.views.blog_index', name="home"),
     url(r'^rant/(?P<slug>[-\w]+)$', 'rants.views.rant', name="rant"),
+    url(r'^rant/(?P<rant>[-\w]+)/(?P<slug>[-\w]+)/$', 'rants.views.post', name="post"),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

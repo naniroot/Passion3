@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title> My awesome rant! </title>
+		<title>{{ rant.name }} </title>
 	</head>
 	<body>
-		<p>This is great</p>
+		<h1> {{ rant.name }} </h1>
+		<p>{{ rant.description|linebreaks }}</p>
+		<section>
+			<h2>Recent Posts</h2>
+			{% if rant.posts.get_visible %}
+			<ul>
+				{% for post in rant.posts.get_visible %}
+				<li>
+					<h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+					{{ post.publish_at|date }}
+					{{ post.excerpt|linebreaks }}
+				</li>
+				{% endfor %}
+			</ul>
+			{% else %}
+			<p> Sorry, no posts yet. Check back soon. </p>
+			{% endif %}
+		</section>
 	</body>
 </html>
 	
