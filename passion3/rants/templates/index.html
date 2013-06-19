@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title> Pick a Rant </title>
-	</head>
-	<body>
-		<h1> Select a blog to view its posts </h1>
-		{% if rants %}
-			<ul>		
-				{% for rant in rants %}
-				<li>
-					<a href="{{ rant.get_absolute_url }}">{{ rant }}</a>
-				</li>
-				{% endfor %}
-			</ul>
-		{% endif %}
-	</body>
-</html>
+{% extends 'layouts/site_base.html' %}
+
+
+{% block page_title %} Pick a Rant! | {{ block.super }} {% endblock %}
+
+{% block header %}	
+<h1> Select a blog to view its posts </h1>
+{% endblock %}
+
+{% block main %}
+{% if rants %}
+	<ul>		
+		{% for rant in rants %}
+		<li>
+			<a href="{{ rant.get_absolute_url }}">{{ rant }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+{% endif %}
+{% endblock %}
 	
