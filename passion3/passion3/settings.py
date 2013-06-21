@@ -129,6 +129,7 @@ INSTALLED_APPS = (
 
     'south',
     'taggit',
+    'annoying',
 
     'rants',
 )
